@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/949a6ade5e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/Content/css/footer.css" />
+    <link rel="stylesheet" href="~/Content/css/home.css">
+    <link rel="stylesheet" href="~/Content/css/profilecard.css" />
+    <style>
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #c1c1c1; /* Change this to the desired color for the thumb */
+            border-radius: 6px;
+            border: 3px solid #f1f1f1; /* Change this to the desired color for the border */
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: #a1a1a1; /* Change this to the desired color for the thumb on hover */
+            }
+
+        ::-webkit-scrollbar-track {
+            background: transparent !important; /* Set the track background color to transparent */
+        }
+    </style>
+</head>
+<body>
+    <header id="myHeader" class="">
+        <img id="logo" src="~/Content/img/faitlogo.png" style="color: #fff;">
+
+
+
+        <nav>
+            <a href="#myHeader">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#aboutus">About Us</a>
+            <a href="#future"><i class="fa fa-solid fa-magnifying-glass"></i></a>
+            <a href="/Login/logout"><i class="fa-solid fa-user"></i></a>
+            <button id="openmenu">
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    <div id="page" class="">
+        <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
+            <ol class="carousel-indicators">
+                <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
+                <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
+                <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img alt="First slide" class="d-block w-100" src="~/Content/img/test1.jpg">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Banner Text one</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
+                    </div>
+                </div>
+                @foreach (var Image in ViewBag.ImageList)
+                {
+                    <div class="carousel-item">
+                        @{string img = Convert.ToBase64String(Image.ImgData);}
+                        <img alt="First slide" class="d-block w-100" src="data:image/png;base64,@img">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>@Image.ImgName</h5>
+                            <p>@Image.ImgDesc</p>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+            <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a>
+            <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+        </div>
+        <br />
+
+        <br /><br /><br /><br /><br /><br />
+
+        <div id="categories">
+
+            <center><h1>Categories</h1></center>
+            <div class="container-prof">
+
+                @foreach (var type in ViewBag.TypeList)
+                {
+                    <a href="/Home/AddTypeToSession?type=@type">
+                        <div class="card1" style=" width: 300px; height: 200px;">
+                            <div class="content">
+                                <div class="cardContent">
+                                    <h3>@type</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+
+            </div>
+        </div>
+
+        <br /><br /><br /><br /><br /><br />
+        <div id="aboutus">
+
+            <center><h1>About Us</h1></center>
+            <div class="container-prof">
+
+                <div class="card1">
+                    <div class="content">
+                        <div class="img"><img src="~/Content/img/sdm.jpg"></div>
+                        <div class="cardContent">
+                            <h3>Siddant Mahajan<br><span>Full Stack Developer</span></h3>
+                        </div>
+                    </div>
+
+                    <ul class="sci">
+                        <li style="--i:1">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:2">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:3">
+                            <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="card1">
+                    <div class="content">
+                        <div class="img"><img src="~/Content/img/vjm.jpg"></div>
+                        <div class="cardContent">
+                            <h3>Vijay Moirangthem<br><span>Full Stack Developer</span></h3>
+                        </div>
+                    </div>
+
+                    <ul class="sci">
+                        <li style="--i:1">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:2">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:3">
+                            <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="card1">
+                    <div class="content">
+                        <div class="img"><img src="~/Content/img/aks.jpg"></div>
+                        <div class="cardContent">
+                            <h3>Ayush Singh<br><span>Full Stack Developer</span></h3>
+                        </div>
+                    </div>
+
+                    <ul class="sci">
+                        <li style="--i:1">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:2">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:3">
+                            <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="card1">
+                    <div class="content">
+                        <div class="img"><img src="~/Content/img/ln.png"></div>
+                        <div class="cardContent">
+                            <h3>Lakshya Nandan<br><span>Full Stack Developer</span></h3>
+                        </div>
+                    </div>
+
+                    <ul class="sci">
+                        <li style="--i:1">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:2">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:3">
+                            <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="card1">
+                    <div class="content">
+                        <div class="img"><img src="~/Content/img/kw.jpg"></div>
+                        <div class="cardContent">
+                            <h3>Kelvin Wilson<br><span>Full Stack Developer</span></h3>
+                        </div>
+                    </div>
+
+                    <ul class="sci">
+                        <li style="--i:1">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:2">
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li style="--i:3">
+                            <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <footer class="new_footer_area bg_color">
+        <div class="new_footer_top">
+            <div class="container">
+                <center><h2>Vision</h2></center>
+                </br>
+                <p>
+                    At <b>Forget About It</b>, our vision is to redefine the grocery
+                    shopping experience by seamlessly blending convenience, quality, and
+                    affordability. We aspire to become the go-to destination for modern
+                    consumers seeking fresh, diverse, and locally sourced products
+                    delivered right to their doorsteps. Through cutting-edge technology
+                    and a customer-centric approach, we aim to simplify and enhance the
+                    way people access essential groceries, empowering them to prioritize
+                    health, sustainability, and community connections in their everyday
+                    lives. Together, we envision a future where grocery shopping is not
+                    just a chore but an enjoyable and enriching experience, where every
+                    purchase contributes to a healthier planet and happier communities.
+                </p>
+                </br>
+                </br>
+                <div class="row">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="f_widget company_widget wow fadeInLeft"
+                             data-wow-delay="0.2s"
+                             style="
+                  visibility: visible;
+                  animation-delay: 0.2s;
+                  animation-name: fadeInLeft;
+                ">
+                            <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+
+                            <div class="col-xl-5 col-md-5 mb-30">
+                                <div class="single-cta">
+                                    <img src="~/Content/img/gps.gif">
+                                    <div class="cta-text">
+                                        <span>CDAC Bengaluru, Electronic City Phase 1, Bengaluru - 560100</span>
+                                    </div>
+                                    <div>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.0175678108462!2d77.66048507457644!3d12.842141187461406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6c85b85ff9c3%3A0x701fbde6d60c4040!2sCenter%20for%20Development%20of%20Advanced%20Computing!5e0!3m2!1sen!2sin!4v1708328545314!5m2!1sen!2sin" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            <div class="col-xl-5 col-md-5 mb-30">
+                                <div class="single-cta">
+                                    <img src="~/Content/img/phone.gif">
+                                    <div class="cta-text">
+                                        <span>+91 9403569414</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </br>
+                            <div class="col-xl col-md mb-30">
+                                <div class="single-cta">
+                                    <img src="~/Content/img/mail.gif">
+                                    <div class="cta-text">
+                                        <span>vjmoirangthem@gmail.com</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </br>
+                            <p>
+                                Subscribe for more offers and promotions!
+                            </p>
+                            <form action="#"
+                                  class="f_subscribe_two mailchimp"
+                                  method="post"
+                                  novalidate="true"
+                                  _lpchecked="1">
+                                <input type="text"
+                                       name="EMAIL"
+                                       class="form-control memail"
+                                       placeholder="Email" />
+                                <button class="btn btn_get btn_get_two" type="submit">
+                                    Subscribe
+                                </button>
+                                <p class="mchimp-errmessage" style="display: none"></p>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget about-widget pl_70 wow fadeInLeft"
+                             data-wow-delay="0.6s"
+                             style="
+                  visibility: visible;
+                  animation-delay: 0.6s;
+                  animation-name: fadeInLeft;
+                ">
+                            <h3 class="f-title f_600 t_color f_size_18">Quick Links</h3>
+                            <ul class="list-unstyled f_list">
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Term &amp; conditions</a></li>
+                                <li><a href="#">Documentation</a></li>
+                            </ul>
+                        </div>
+                        </br>
+                        <div class="col-lg-3 col-md-6">
+                            <h3 class="f-title f_600 t_color f_size_18">Payments Accepted</h3>
+                            <ul class="list-unstyled f_list" style="display:flex;">
+
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
+                                        <path fill="#0d47a1" d="M5.446 18.01H.548c-.277 0-.502.167-.503.502L0 30.519c-.001.3.196.45.465.45.735 0 1.335 0 2.07 0C2.79 30.969 3 30.844 3 30.594 3 29.483 3 28.111 3 27l2.126.009c1.399-.092 2.335-.742 2.725-2.052.117-.393.14-.733.14-1.137l.11-2.862C7.999 18.946 6.949 18.181 5.446 18.01zM4.995 23.465C4.995 23.759 4.754 24 4.461 24H3v-3h1.461c.293 0 .534.24.534.535V23.465zM13.938 18h-3.423c-.26 0-.483.08-.483.351 0 .706 0 1.495 0 2.201C10.06 20.846 10.263 21 10.552 21h2.855c.594 0 .532.972 0 1H11.84C10.101 22 9 23.562 9 25.137c0 .42.005 1.406 0 1.863-.008.651-.014 1.311.112 1.899C9.336 29.939 10.235 31 11.597 31h4.228c.541 0 1.173-.474 1.173-1.101v-8.274C17.026 19.443 15.942 18.117 13.938 18zM14 27.55c0 .248-.202.45-.448.45h-1.105C12.201 28 12 27.798 12 27.55v-2.101C12 25.202 12.201 25 12.447 25h1.105C13.798 25 14 25.202 14 25.449V27.55zM18 18.594v5.608c.124 1.6 1.608 2.798 3.171 2.798h1.414c.597 0 .561.969 0 .969H19.49c-.339 0-.462.177-.462.476v2.152c0 .226.183.396.422.396h2.959c2.416 0 3.592-1.159 3.591-3.757v-8.84c0-.276-.175-.383-.342-.383h-2.302c-.224 0-.355.243-.355.422v5.218c0 .199-.111.316-.29.316H21.41c-.264 0-.409-.143-.409-.396v-5.058C21 18.218 20.88 18 20.552 18c-.778 0-1.442 0-2.22 0C18.067 18 18 18.263 18 18.594L18 18.594z"></path>
+                                        <path fill="#00adee" d="M27.038 20.569v-2.138c0-.237.194-.431.43-.431H28c1.368-.285 1.851-.62 2.688-1.522.514-.557.966-.704 1.298-.113L32 18h1.569C33.807 18 34 18.194 34 18.431v2.138C34 20.805 33.806 21 33.569 21H32v9.569C32 30.807 31.806 31 31.57 31h-2.14C29.193 31 29 30.807 29 30.569V21h-1.531C27.234 21 27.038 20.806 27.038 20.569L27.038 20.569zM42.991 30.465c0 .294-.244.535-.539.535h-1.91c-.297 0-.54-.241-.54-.535v-6.623-1.871c0-1.284-2.002-1.284-2.002 0v8.494C38 30.759 37.758 31 37.461 31H35.54C35.243 31 35 30.759 35 30.465V18.537C35 18.241 35.243 18 35.54 18h1.976c.297 0 .539.241.539.537v.292c1.32-1.266 3.302-.973 4.416.228 2.097-2.405 5.69-.262 5.523 2.375 0 2.916-.026 6.093-.026 9.033 0 .294-.244.535-.538.535h-1.891C45.242 31 45 30.759 45 30.465c0-2.786 0-5.701 0-8.44 0-1.307-2-1.37-2 0v8.44H42.991z"></path>
+                                    </svg>
+                                </li>
+
+                                <li><img width="50" height="50" src="https://img.icons8.com/external-filled-outline-berkahicon/64/external-Cod-delivery-filled-outline-berkahicon.png" alt="external-Cod-delivery-filled-outline-berkahicon" /></li>
+                                <li><img width="50" height="50" src="https://img.icons8.com/ios/100/qr-code--v1.png" alt="qr-code--v1" /></li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 32 32">
+                                        <path d="M 8.8710938 8 L 8.6621094 8.0351562 C 8.0081094 8.1171563 7.3775156 8.3618125 6.8535156 8.7578125 C 6.7365156 8.8278125 6.631625 8.921625 6.515625 9.015625 C 6.503625 8.992625 6.4921875 8.9683125 6.4921875 8.9453125 C 6.4681875 8.8163125 6.4565937 8.6778281 6.4335938 8.5488281 C 6.3985937 8.3388281 6.2822656 8.2324219 6.0722656 8.2324219 L 5.5234375 8.2324219 C 5.1854375 8.2324219 5.1269531 8.3038594 5.1269531 8.6308594 L 5.1269531 18.755859 C 5.1389531 18.907859 5.231375 18.988 5.359375 19 L 6.375 19 C 6.515 19 6.5964219 18.907859 6.6074219 18.755859 C 6.6194219 18.708859 6.6191406 18.662234 6.6191406 18.615234 L 6.6191406 15.097656 C 6.6661406 15.144656 6.7016094 15.168406 6.7246094 15.191406 C 7.5766094 15.903406 8.5568594 16.135781 9.6308594 15.925781 C 10.610859 15.727781 11.28675 15.132812 11.71875 14.257812 C 12.05675 13.592813 12.195031 12.916641 12.207031 12.181641 C 12.230031 11.376641 12.160266 10.60175 11.822266 9.84375 C 11.425266 8.91075 10.749375 8.2920312 9.734375 8.0820312 C 9.582375 8.0470312 9.4195781 8.0347187 9.2675781 8.0117188 C 9.1275781 7.9997187 8.9990938 8 8.8710938 8 z M 16.642578 8 C 16.595578 8.012 16.550906 8.0234375 16.503906 8.0234375 C 16.036906 8.0464375 15.580953 8.1047031 15.126953 8.2207031 C 14.834953 8.2907031 14.555391 8.3952813 14.275391 8.4882812 C 14.100391 8.5462812 14.017578 8.6753281 14.017578 8.8613281 C 14.029578 9.0133281 14.017578 9.176125 14.017578 9.328125 C 14.029578 9.561125 14.123703 9.6215 14.345703 9.5625 C 14.718703 9.4695 15.091844 9.3649219 15.464844 9.2949219 C 16.047844 9.1899219 16.643281 9.1426094 17.238281 9.2246094 C 17.553281 9.2826094 17.844969 9.3648125 18.042969 9.6328125 C 18.217969 9.8548125 18.288781 10.134063 18.300781 10.414062 C 18.312781 10.811063 18.3125 11.125484 18.3125 11.521484 C 18.3125 11.544484 18.312781 11.567125 18.300781 11.578125 L 18.242188 11.578125 C 17.740188 11.450125 17.227844 11.380703 16.714844 11.345703 C 16.177844 11.322703 15.641906 11.346203 15.128906 11.533203 C 14.510906 11.743203 14.007797 12.115656 13.716797 12.722656 C 13.494797 13.189656 13.459297 13.680641 13.529297 14.181641 C 13.634297 14.858641 13.961641 15.371266 14.556641 15.697266 C 15.128641 16.012266 15.735234 16.046125 16.365234 15.953125 C 17.088234 15.848125 17.729063 15.545125 18.289062 15.078125 C 18.312062 15.055125 18.336375 15.044484 18.359375 15.021484 C 18.394375 15.208484 18.418125 15.383875 18.453125 15.546875 C 18.476125 15.698875 18.570938 15.790734 18.710938 15.802734 L 19.492188 15.802734 C 19.609188 15.802734 19.714844 15.698312 19.714844 15.570312 C 19.726844 15.535312 19.726562 15.487406 19.726562 15.441406 L 19.726562 10.462891 C 19.723562 10.263891 19.710781 10.053469 19.675781 9.8554688 C 19.582781 9.2374687 19.325625 8.7234844 18.765625 8.3964844 C 18.450625 8.2094844 18.101516 8.1165938 17.728516 8.0585938 C 17.553516 8.0345937 17.389844 8.023 17.214844 8 L 16.642578 8 z M 20.6875 8.0019531 C 20.5705 8.0019531 20.512156 8.1056562 20.535156 8.2226562 C 20.558156 8.3166563 20.593906 8.422625 20.628906 8.515625 C 21.561906 10.825625 22.506172 13.134078 23.451172 15.455078 C 23.533172 15.653078 23.544172 15.817625 23.451172 16.015625 C 23.300172 16.364625 23.170813 16.726172 23.007812 17.076172 C 22.867813 17.391172 22.635156 17.62575 22.285156 17.71875 C 22.052156 17.77775 21.795781 17.800625 21.550781 17.765625 C 21.433781 17.753625 21.316219 17.73075 21.199219 17.71875 C 21.035219 17.70675 20.955359 17.776172 20.943359 17.951172 L 20.943359 18.419922 C 20.955359 18.688922 21.036687 18.804562 21.304688 18.851562 C 21.561687 18.897562 21.829375 18.931359 22.109375 18.943359 C 22.925375 18.954359 23.568281 18.629969 23.988281 17.917969 C 24.163281 17.637969 24.303641 17.345969 24.431641 17.042969 C 25.562641 14.184969 26.682734 11.33875 27.802734 8.46875 C 27.837734 8.38675 27.859094 8.3039375 27.871094 8.2109375 C 27.894094 8.0709375 27.824266 8.0019062 27.697266 8.0039062 L 26.753906 8.0039062 C 26.590906 7.9919063 26.438859 8.0960469 26.380859 8.2480469 C 26.357859 8.3180469 26.333547 8.3753125 26.310547 8.4453125 L 24.642578 13.216797 C 24.525578 13.554797 24.396297 13.904344 24.279297 14.277344 C 24.255297 14.218344 24.244422 14.195156 24.232422 14.160156 C 23.614422 12.457156 23.008625 10.755734 22.390625 9.0527344 C 22.297625 8.7727344 22.192891 8.502375 22.087891 8.234375 C 22.041891 8.105375 21.935203 8.0136719 21.783203 8.0136719 C 21.421203 8.0016719 21.0605 8.0019531 20.6875 8.0019531 z M 8.859375 9.2128906 C 9.571375 9.2708906 10.154031 9.6212187 10.457031 10.449219 C 10.644031 10.962219 10.691406 11.457141 10.691406 11.994141 C 10.691406 12.496141 10.656859 12.939969 10.505859 13.417969 C 10.178859 14.432969 9.4316094 14.829203 8.4746094 14.783203 C 7.7976094 14.748203 7.2264531 14.490187 6.6894531 14.117188 C 6.6314531 14.082187 6.5964219 14.025797 6.6074219 13.966797 L 6.6074219 10.005859 C 6.5964219 9.9358594 6.6314531 9.87875 6.6894531 9.84375 C 7.3424531 9.38875 8.065375 9.1548906 8.859375 9.2128906 z M 16.427734 12.363281 C 16.627484 12.345781 16.828844 12.349547 17.027344 12.373047 C 17.424344 12.408047 17.82175 12.477156 18.21875 12.535156 C 18.30075 12.547156 18.322266 12.582344 18.322266 12.652344 C 18.310266 12.886344 18.322266 13.107797 18.322266 13.341797 C 18.322266 13.574797 18.310547 13.785531 18.310547 14.019531 C 18.322547 14.077531 18.287234 14.123203 18.240234 14.158203 C 17.703234 14.543203 17.120078 14.801094 16.455078 14.871094 C 16.187078 14.894094 15.918109 14.894062 15.662109 14.789062 C 15.370109 14.684062 15.150359 14.438484 15.068359 14.146484 C 14.975359 13.843484 14.975641 13.528609 15.056641 13.224609 C 15.184641 12.827609 15.463891 12.607516 15.837891 12.478516 C 16.030391 12.420016 16.227984 12.380781 16.427734 12.363281 z M 29.041016 20.001953 C 28.107641 20.014953 27.005922 20.224047 26.169922 20.810547 C 25.911922 20.989547 25.957141 21.238078 26.244141 21.205078 C 27.184141 21.092078 29.276391 20.838406 29.650391 21.316406 C 30.025391 21.794406 29.235719 23.766437 28.886719 24.648438 C 28.778719 24.911437 29.007047 25.020312 29.248047 24.820312 C 30.812047 23.510312 31.218438 20.764141 30.898438 20.369141 C 30.737937 20.171641 29.974391 19.988953 29.041016 20.001953 z M 1.2167969 21.001953 C 0.99873437 21.031953 0.9048125 21.308344 1.1328125 21.527344 C 5.0498125 25.201344 10.225656 27 15.972656 27 C 20.071656 27 24.830234 25.662578 28.115234 23.142578 C 28.658234 22.723578 28.195672 22.09575 27.638672 22.34375 C 23.955672 23.96875 19.955453 24.751953 16.314453 24.751953 C 10.918453 24.751953 5.69475 23.625406 1.46875 21.066406 C 1.37625 21.010406 1.2894844 20.991953 1.2167969 21.001953 z"></path>
+                                    </svg>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
+                                        <path fill="#4527a0" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5	V37z"></path>
+                                        <path fill="#fff" d="M32.267,20.171c0-0.681-0.584-1.264-1.264-1.264h-2.334l-5.35-6.25	c-0.486-0.584-1.264-0.778-2.043-0.584l-1.848,0.584c-0.292,0.097-0.389,0.486-0.195,0.681l5.836,5.666h-8.851	c-0.292,0-0.486,0.195-0.486,0.486v0.973c0,0.681,0.584,1.506,1.264,1.506h1.972v4.305c0,3.502,1.611,5.544,4.723,5.544	c0.973,0,1.378-0.097,2.35-0.486v3.112c0,0.875,0.681,1.556,1.556,1.556h0.786c0.292,0,0.584-0.292,0.584-0.584V21.969h2.812	c0.292,0,0.486-0.195,0.486-0.486V20.171z M26.043,28.413c-0.584,0.292-1.362,0.389-1.945,0.389c-1.556,0-2.097-0.778-2.097-2.529	v-4.305h4.043V28.413z"></path>
+                                    </svg>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
+                                        <path fill="#e64a19" d="M42.858,11.975c-4.546-2.624-10.359-1.065-12.985,3.481L23.25,26.927	c-1.916,3.312,0.551,4.47,3.301,6.119l6.372,3.678c2.158,1.245,4.914,0.506,6.158-1.649l6.807-11.789	C48.176,19.325,46.819,14.262,42.858,11.975z"></path>
+                                        <path fill="#fbc02d" d="M35.365,16.723l-6.372-3.678c-3.517-1.953-5.509-2.082-6.954,0.214l-9.398,16.275	c-2.624,4.543-1.062,10.353,3.481,12.971c3.961,2.287,9.024,0.93,11.311-3.031l9.578-16.59	C38.261,20.727,37.523,17.968,35.365,16.723z"></path>
+                                        <path fill="#43a047" d="M36.591,8.356l-4.476-2.585c-4.95-2.857-11.28-1.163-14.137,3.787L9.457,24.317	c-1.259,2.177-0.511,4.964,1.666,6.22l5.012,2.894c2.475,1.43,5.639,0.582,7.069-1.894l9.735-16.86	c2.017-3.492,6.481-4.689,9.974-2.672L36.591,8.356z"></path>
+                                        <path fill="#1e88e5" d="M19.189,13.781l-4.838-2.787c-2.158-1.242-4.914-0.506-6.158,1.646l-5.804,10.03	c-2.857,4.936-1.163,11.252,3.787,14.101l3.683,2.121l4.467,2.573l1.939,1.115c-3.442-2.304-4.535-6.92-2.43-10.555l1.503-2.596	l5.504-9.51C22.083,17.774,21.344,15.023,19.189,13.781z"></path>
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="f_widget social-widget pl_70 wow fadeInLeft"
+                             data-wow-delay="0.8s"
+                             style="
+                  visibility: visible;
+                  animation-delay: 0.8s;
+                  animation-name: fadeInLeft;
+                ">
+                            <h3 class="f-title f_600 t_color f_size_18">Socials</h3>
+                            <div class="f_social_icon">
+                                <a href="#" class="fab fa-facebook"></a>
+                                <a href="#" class="fab fa-threads"></a>
+                                <a href="#" class="fab fa-x-twitter"></a>
+                                <a href="#" class="fab fa-linkedin"></a>
+                                <a href="#" class="fab fa-instagram"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bg">
+                <div class="footer_bg_one"></div>
+                <div class="footer_bg_two"></div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <center>
+                <h4>&#9400; Forget About It 2024</h4>
+            </center>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/949a6ade5e.js" crossorigin="anonymous"></script>
+    <!-- partial -->
+    <script src="~/Content/js/script.js"></script>
+
+
+</body>
+</html>
